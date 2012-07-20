@@ -1,5 +1,8 @@
+#!/bin/bash
+
 # 统计自定义文件的平均耗时结果,按组进行平均计算,采样时的平均值是不排序的，直接采用文件最后一行
-for i in `cat analyse/testcase`;do
+baseDir=$(cd "$(dirname "$0")"; pwd)
+for i in `cat $baseDir/testcase`;do
 	files=`find $i -name perf*log`; 
 	sum=0
 	count=0

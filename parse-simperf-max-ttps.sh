@@ -1,5 +1,8 @@
+#!/bin/bash
+
 # 统计自定义文件的最大TPS结果,并将结果按测试场景分组求和
-for i in `cat analyse/testcase`;do
+baseDir=$(cd "$(dirname "$0")"; pwd)
+for i in `cat $baseDir/testcase`;do
 	files=`find $i -name perf*log`; 
 	sum=0;
 	for perf in $files;do

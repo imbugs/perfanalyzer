@@ -1,5 +1,8 @@
+#!/bin/bash
+
 # 统计网络使用，网络>1M列入统计，I/O
-for i in `cat analyse/testcase`;do
+baseDir=$(cd "$(dirname "$0")"; pwd)
+for i in `cat $baseDir/testcase`;do
 	nmon=`find $i -name zqueue*nmon`
 	in=`fgrep NET $nmon | fgrep -v NETPAC |fgrep -v Network| cut -d',' -f5`
 	insum=0

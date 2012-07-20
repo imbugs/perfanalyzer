@@ -1,5 +1,8 @@
+#!/bin/bash
+
 # 统计自定义文件的最大最小耗时结果,计算所有文件符合条件的文件，不进行合并计算
-for i in `cat analyse/testcase`;do
+baseDir=$(cd "$(dirname "$0")"; pwd)
+for i in `cat $baseDir/testcase`;do
 	files=`find $i -name perf*log`; 
 	max=0
 	min=99999999
