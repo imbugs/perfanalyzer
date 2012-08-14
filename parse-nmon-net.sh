@@ -18,7 +18,7 @@ for i in `cat $baseDir/testcase`;do
 	out=`fgrep NET $nmon | fgrep -v NETPAC |fgrep -v Network| cut -d',' -f8`
 	osum=0
 	ocount=0
-	for c in $in;do
+	for c in $out;do
 		if [ `echo "$c > 1000" | bc` -eq 1 ];then
 			osum=`echo "$c + $osum"|bc`;
 			ocount=$(($ocount+1))
