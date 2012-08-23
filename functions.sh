@@ -32,5 +32,15 @@ function recent() {
 		echo $curStr
 	fi
 }
+
+function divide() {
+	a=$1
+	b=$2
+	if [ `echo "$b == 0" | bc` -eq 1 ];then
+		echo "0"
+	else
+		echo `echo "$a / $b" | bc`
+	fi
+}
 #rt=`recent "2012-07-10 20:39:04" ~/zqueue/bin/201207102040-M4-mtest/confregdata4.test.alipay.net/perf-test-result.log`
 #echo $rt

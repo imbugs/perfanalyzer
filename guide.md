@@ -21,7 +21,8 @@ xxxx.nmon, nmon -f -s 5 -c 100000
 howlong.sh，从jstat中获取JAVA进行运行时长
 parse-jstat.sh，获取jstat中的最后一行信息，做为采样信息
 parse-nmon-cpu.sh，从nmon日志中分析平均CPU占用率，采用CPU>5%的数据
-parse-nmon-disk.sh，从nmon日志中分析DISK使用情况，读/写/繁忙程度
+parse-nmon-disk.sh，从nmon日志中分析DISK使用情况，读/写/繁忙程度，计算平均值
+parse-nmon-disk-max.sh, 从nmon日志中分析DISK使用情况，读/写/繁忙程度，只取最大值
 parse-nmon-net.sh，从nmon日志中分析网络使用情况，输入/输出
 parse-simperf-avgcost.sh，从simperf日志中分析平均耗时信息(avgcost)，会对所有Client的avgcost进行平均计算
 parse-simperf-max-min-tavgcost.sh，从simperf日志中分析最大最小的耗时信息(tavgcost)，查找所有Client的日志，查找出最大与最小的tavgcost
