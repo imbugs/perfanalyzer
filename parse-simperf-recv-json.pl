@@ -11,6 +11,7 @@ my $json = JSON->new->allow_nonref;
 
 my @testcases=`cat $baseDir/testcase`;
 
+#&calcMaxTTps("201208201919_S2R2_TEG");
 for my $tcase (@testcases) {
 	chomp $tcase;
 	if ($tcase eq "") {
@@ -21,7 +22,7 @@ for my $tcase (@testcases) {
 print "Finished\n";
 sub calcMaxTTps($) {
 	my $dir = shift;
-	my @files=`find $cwd/$dir -name simp*.log`;
+	my @files=`find $cwd/$dir -name recv*.log`;
 
 	if(@files < 1) {
 		print "find no files\n";
@@ -80,14 +81,14 @@ sub calcMaxTTps($) {
 				}
 			}
 			my $otherCount = @$otherFile;
-            # take the nearest timeline, this if condition can be removed if you don't want to take the nearest timeline.
-            if($lastMatchIdx < $otherCount && $lastMatchIdx >= 0 && $matchIdx < $otherCount && $matchIdx >= 0) {
-                my $lastLine = @$otherFile[$lastMatchIdx];
-                my $nowLine = @$otherFile[$matchIdx];
-                if (abs($time - $lastLine->{time}) < abs($time - $nowLine->{time})) {
-                    $matchIdx = $lastMatchIdx;
-                }   
-            } 
+			# take the nearest timeline, this if condition can be removed if you don't want to take the nearest timeline.
+			if($lastMatchIdx < $otherCount && $lastMatchIdx >= 0 && $matchIdx < $otherCount && $matchIdx >= 0) {
+				my $lastLine = @$otherFile[$lastMatchIdx];
+				my $nowLine = @$otherFile[$matchIdx];
+				if (abs($time - $lastLine->{time}) < abs($time - $nowLine->{time})) {
+					$matchIdx = $lastMatchIdx;
+				}
+			}
 			if($matchIdx >= $otherCount || $matchIdx < 0) {
 				last;
 			}
@@ -108,15 +109,9 @@ sub parseFile($) {
 	while(<FILE>) {
 		my $line = "$_";
 		if ($line =~ /time/) {
-			# change string to date
-			my $time = substr($line, 6, 25);
-			my $secs = `date -d $time +%s`;
-	
-			$secs = substr($secs, 0, 10);
-			$line =~ s/$time/$secs/g;
-	
 			# formate line
 			chomp $line;
+			$line =~ s/=/:/g;
 			$line =~ s/:/\":/g;
 			$line =~ s/,/,\"/g;
 			$line =~ s/{/{\"/g;
