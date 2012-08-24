@@ -28,6 +28,7 @@ parse-simperf-avgcost.sh，从simperf日志中分析平均耗时信息(avgcost)�
 parse-simperf-max-min-tavgcost.sh，从simperf日志中分析最大最小的耗时信息(tavgcost)，查找所有Client的日志，查找出最大与最小的tavgcost
 parse-simperf-max-ttps.sh，将同一时刻的tTps求和，再找出最大的值,有针对时间的处理,使用fgrep处理，文件太大时速度会很慢
 parse-simperf-count-max-ttps.sh，从simperf日志中计算所有Client的最大瞬时TPS(tTps)之和，会查找所有Client日志中最大的tTps，并进行相加
-parse-simperf-json.pl，新版本simperf生成json的结果文件，针对json文件进行解析统计的perl脚本
+parse-simperf-json.pl，新版本simperf生成json的结果文件，针对json文件进行解析统计的perl脚本，查找时间部分可以改为二分查找法
+parse-simperf-recv-json.pl，接收消息分析json的结果，从parse-simperf-json.pl修改而来的
 guide.md，说明文档
 testcase，存放需要统计的用例结果目录，例如：tesetcase-result-1，所有脚本会按此文件包含的内容进行统计
