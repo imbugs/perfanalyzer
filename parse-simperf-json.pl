@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-use JSON;
+use JSON::PP;
 use Data::Dumper;
 use Cwd;
 use File::Basename;
@@ -7,7 +7,7 @@ use strict;
 
 my $baseDir = dirname(__FILE__);
 my $cwd = getcwd;
-my $json = JSON->new->allow_nonref;
+my $json = JSON::PP->new->allow_nonref->allow_barekey;
 
 my @testcases=`cat $baseDir/testcase`;
 
@@ -117,9 +117,6 @@ sub parseFile($) {
 	
 			# formate line
 			chomp $line;
-			$line =~ s/:/\":/g;
-			$line =~ s/,/,\"/g;
-			$line =~ s/{/{\"/g;
 			$line =~ s/N\/A/0/g;
 
 			my $obj = $json->decode($line);
