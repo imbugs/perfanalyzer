@@ -3,11 +3,16 @@
 baseDir=$(cd "$(dirname "$0")"; pwd)
 source $baseDir/functions.sh
 
-date="2012-07-" #需要统计的时间段
+date="2012-09-07" #需要统计的时间段
+file="perf*log";
 
 for i in `cat $baseDir/testcase`;do
-	files=`find $i -name perf*log`; 
+	files=`find $i -name $file`; 
 
+	if [ "$files" == "" ];then
+		echo "no $file files";
+		exit;
+	fi
 	tscount=0
 	maxtsfile=""
 	for perf in $files;do
