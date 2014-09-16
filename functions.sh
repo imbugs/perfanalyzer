@@ -42,5 +42,5 @@ function divide() {
 		echo `echo "$a / $b" | bc`
 	fi
 }
-#rt=`recent "2012-07-10 20:39:04" ~/zqueue/bin/201207102040-M4-mtest/confregdata4.test.alipay.net/perf-test-result.log`
+#rt=`recent "2012-07-10 20:39:04" ~/zqueue/bin/201207102040-M4-mtest/confregdata4.test.imbugs.com/perf-test-result.log`
 #echo $rt
